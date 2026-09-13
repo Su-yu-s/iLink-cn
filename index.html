@@ -66,12 +66,36 @@ button{font:inherit;background:none;border:none;cursor:pointer;color:inherit}
 .ncta .i{width:15px;height:15px}
 .nav-burger{display:none;width:44px;height:44px;border-radius:12px;background:var(--brand-soft);align-items:center;justify-content:center;color:var(--ink);transition:background .2s}
 .nav-burger:active{background:#E3E5EA}
-.nav-burger svg{width:22px;height:22px;stroke-width:2}
-#mnav{display:none;position:fixed;top:calc(68px + var(--safe-top));left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);z-index:55;padding:16px 20px 22px;flex-direction:column;gap:4px;transform:translateY(-8px);opacity:0;pointer-events:none;transition:transform .25s var(--ease),opacity .25s}
-#mnav.open{transform:translateY(0);opacity:1;pointer-events:auto}
-#mnav a{display:block;padding:14px 16px;font-size:15.5px;font-weight:600;color:var(--ink);border-radius:12px;transition:background .15s}
+.nav-burger svg{width:24px;height:24px;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;fill:none;stroke:currentColor}
+
+/* ===== 移动端菜单：右侧悬浮小面板 ===== */
+#mnav{
+  display:none;
+  position:fixed;
+  top:calc(66px + var(--safe-top));
+  right:14px;
+  left:auto;
+  width:180px;
+  background:rgba(255,255,255,.98);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--line);
+  border-radius:14px;
+  z-index:55;
+  padding:6px;
+  flex-direction:column;
+  gap:1px;
+  transform:translateY(-8px) scale(.96);
+  transform-origin:top right;
+  opacity:0;
+  pointer-events:none;
+  transition:transform .2s var(--ease),opacity .2s;
+  box-shadow:0 16px 40px rgba(28,30,35,.12);
+}
+#mnav.open{transform:translateY(0) scale(1);opacity:1;pointer-events:auto}
+#mnav a{display:block;padding:9px 12px;font-size:14px;font-weight:600;color:var(--ink);border-radius:9px;transition:background .15s}
 #mnav a:active{background:var(--brand-soft)}
-#mnav .m-cta{background:var(--brand);color:#fff;text-align:center;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:8px}
+#mnav .m-cta{background:var(--brand);color:#fff;text-align:center;margin-top:4px;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:13.5px}
 #mnav .m-cta:active{background:var(--brand-deep)}
 
 #hero{position:relative;padding:150px 0 90px;text-align:center;overflow:hidden}
@@ -98,7 +122,7 @@ button{font:inherit;background:none;border:none;cursor:pointer;color:inherit}
 .btn-s{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#fff;border:1px solid var(--line);color:var(--ink);padding:14px 30px;border-radius:99px;font-size:15.5px;font-weight:600;transition:border-color .2s,background .2s,transform .25s var(--ease);min-height:44px}
 .btn-s:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-soft);transform:translateY(-2px)}
 .btn-s:active{transform:translateY(0) scale(.97)}
-.scroll-hint{margin-top:70px;display:inline-flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.3em;color:var(--ink-3);text-transform:uppercase}
+.scroll-hint{margin-top:70px;display:inline-flex;flex-direction:column;align-items:center;gap:10px;font-size:11px;letter-spacing:.3em;color:var(--ink-3);text-transform:uppercase;overflow:hidden}
 .scroll-hint .ln{width:1px;height:52px;background:linear-gradient(var(--brand),transparent);animation:drop 1.8s var(--ease) infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
@@ -252,7 +276,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.85);border-top:1px solid r
   #nav .ncta{display:none}
   .nav-burger{display:flex}
   #nav .wrap{height:60px}
-  #mnav{top:calc(60px + var(--safe-top))}
+  #mnav{display:flex}
   #hero{padding:100px 0 56px}
   .h-badge{font-size:11.5px;padding:6px 14px;gap:7px}
   .h-badge .bd{width:7px;height:7px}
@@ -375,7 +399,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.85);border-top:1px solid r
 </head>
 <body>
 
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
   <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
   <symbol id="i-graduation" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12.5V17c0 1.5 2.7 2.5 6 2.5s6-1 6-2.5v-4.5"/><path d="M22 10v6"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
@@ -396,8 +420,6 @@ footer{background:var(--dark);color:rgba(255,255,255,.85);border-top:1px solid r
   <symbol id="i-user1" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></symbol>
   <symbol id="i-teach" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/><path d="m17 8 3-1.5L17 5"/></symbol>
   <symbol id="i-admin" viewBox="0 0 24 24"><path d="M12 2 20 6v5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z"/><circle cx="12" cy="11" r="2.5"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></symbol>
-  <symbol id="i-close" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></symbol>
 </svg>
 
 <div id="boot" aria-hidden="true">
@@ -425,7 +447,11 @@ footer{background:var(--dark);color:rgba(255,255,255,.85);border-top:1px solid r
     <div class="nav-right">
       <a class="ncta" href="http://121.40.34.68:8090/">立即加入<svg class="i"><use href="#i-arrow"/></svg></a>
       <button class="nav-burger" id="burger" aria-label="打开菜单" aria-expanded="false">
-        <svg id="burgerIcon"><use href="#i-menu"/></svg>
+        <svg id="burgerIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="7" x2="20" y2="7"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
       </button>
     </div>
   </div>
@@ -437,7 +463,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.85);border-top:1px solid r
   <a href="#flow">流程</a>
   <a href="#ai">AI 协作</a>
   <a href="#security">安全</a>
-  <a class="m-cta" href="http://121.40.34.68:8090/">立即加入<svg class="i" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a>
+  <a class="m-cta" href="http://121.40.34.68:8090/">立即加入<svg class="i" style="width:14px;height:14px"><use href="#i-arrow"/></svg></a>
 </nav>
 
 <main>
@@ -455,7 +481,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.85);border-top:1px solid r
         <a class="btn-p" href="http://121.40.34.68:8090/">立即加入<svg class="i"><use href="#i-arrow"/></svg></a>
         <a class="btn-s" href="http://121.40.34.68:8090/team-market.html">先逛逛组队大厅</a>
       </div>
-      <div class="scroll-hint" data-hero><span class="ln"></span>向下探索</div>
+      <div class="scroll-hint" data-hero><span class="ln"></span><span>向下探索</span></div>
     </div>
   </section>
 
@@ -740,14 +766,22 @@ footer{background:var(--dark);color:rgba(255,255,255,.85);border-top:1px solid r
     menuOpen = typeof force === 'boolean' ? force : !menuOpen;
     mnav.classList.toggle('open', menuOpen);
     burger.setAttribute('aria-expanded', menuOpen);
-    burgerIcon.innerHTML = '<use href="' + (menuOpen ? '#i-close' : '#i-menu') + '"/>';
+    burgerIcon.innerHTML = menuOpen
+      ? '<line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/>'
+      : '<line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>';
   }
   if (burger) {
-    burger.addEventListener('click', function () { toggleMenu(); });
+    burger.addEventListener('click', function (e) { e.stopPropagation(); toggleMenu(); });
     mnav.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', function () { toggleMenu(false); });
     });
   }
+  // 点击外部关闭菜单
+  document.addEventListener('click', function (e) {
+    if (menuOpen && !e.target.closest('#mnav') && !e.target.closest('#burger')) {
+      toggleMenu(false);
+    }
+  });
 
   var boot = doc.getElementById('boot');
   if (hasGsap && !reduce) {
