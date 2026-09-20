@@ -158,6 +158,9 @@
   .frame-bar .fdot{width:9px;height:9px;border-radius:50%;flex:none;opacity:.85;}
   .frame-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
   .frame-img.contain-fit{object-fit:contain;background:var(--bg-tag);}
+  /* 竖版窗口截图：按原图比例显示，并收窄居中，避免被 16:9 裁切 */
+  .frame-img.portrait{aspect-ratio:672/957;object-fit:cover;}
+  .frame.is-portrait{max-width:352px;margin-left:auto;margin-right:auto;}
   .frame-cap{font-size:0.75rem;color:var(--text-3);text-align:center;padding:10px 12px 12px;}
   .proj-figure{position:relative;}
   .proj-figure .frame{position:relative;transition:box-shadow .35s ease,transform .35s cubic-bezier(.22,1,.36,1);}
@@ -510,9 +513,9 @@
         </div>
       </div>
       <div class="proj-figure reveal-img">
-        <div class="frame">
+        <div class="frame is-portrait">
           <div class="frame-bar"><span class="fdot" style="background:#ff5f57;"></span><span class="fdot" style="background:#febc2e;"></span><span class="fdot" style="background:#28c840;"></span></div>
-          <img class="frame-img" src="./image/jwt-client.png" alt="JWT License 客户端激活授权界面" loading="lazy">
+          <img class="frame-img portrait" src="./image/jwt-client.png" alt="JWT License 客户端激活授权界面" loading="lazy">
           <div class="frame-cap">客户端 · 激活授权</div>
         </div>
         <div class="frame" style="margin-top:16px;">
